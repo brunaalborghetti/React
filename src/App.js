@@ -1,4 +1,4 @@
-import impetuskeyIMG from './assets/impetus.jpg'
+import impetuskeyIMG from './assets/Cateye.jpg'
 
 import './styles.css'
 
@@ -9,10 +9,10 @@ function App() {
      <div className="wrap-login">
       <form className="login-form">
 
-        <span className="login-form-title">Bem Vindo à Impetuskey!</span>
+        <span className="login-form-title">As armações de óculos mais lindas do mercado</span>
         
         <span className="container">
-          <img src={impetuskeyIMG} alt="Impetuskey" />
+          <img src={impetuskeyIMG} alt="CatEye" />
           </span>
           <p></p>
 
