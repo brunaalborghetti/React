@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}
+
+.task-item.completed {
+  background-color: #e0f7fa;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
