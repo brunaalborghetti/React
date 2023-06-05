@@ -45,7 +45,7 @@ const App: React.FC = () => {
       <div>
         <input
           type="text"
-          placeholder="Enter a task"
+          placeholder="Insira uma tarefa"
           value={inputText}
           onChange={handleInputChange}
         />
@@ -65,7 +65,7 @@ const App: React.FC = () => {
               />
               {task.text}
             </label>
-            <button onClick={() => handleRemoveTask(task.id)}>Remove</button>
+            <button onClick={() => handleRemoveTask(task.id)}>Remover</button>
           </li>
         ))}
       </ul>

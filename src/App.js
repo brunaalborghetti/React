@@ -39,11 +39,11 @@ function App() {
       <div>
         <input
           type="text"
-          placeholder="Enter a task"
+          placeholder="Insira uma tarefa"
           value={inputText}
           onChange={handleInputChange}
         />
-        <button onClick={handleAddTask}>Add Task</button>
+        <button onClick={handleAddTask}>Adicionar</button>
       </div>
       <ul className="task-list">
         {tasks.map((task) => (
@@ -59,7 +59,7 @@ function App() {
               />
               {task.text}
             </label>
-            <button onClick={() => handleRemoveTask(task.id)}>Remove</button>
+            <button onClick={() => handleRemoveTask(task.id)}>Remover</button>
           </li>
         ))}
       </ul>
