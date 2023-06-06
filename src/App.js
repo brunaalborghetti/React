@@ -1,68 +1,43 @@
 import React, { useState } from "react";
 import "./App.css";
+import ListaDeTarefas from "./components/ListaDeTarefas";
+import FormularioAdicionarTarefa from "./components/FormularioAdicionarTarefa";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [inputText, setInputText] = useState("");
+  const [tarefas, setTarefas] = useState([]);
 
-  const handleInputChange = (event) => {
-    setInputText(event.target.value);
-  };
-
-  const handleAddTask = () => {
-    if (inputText.trim() !== "") {
-      const newTask = {
+  const adicionarTarefa = (texto) => {
+    if (texto.trim() !== "") {
+      const novaTarefa = {
         id: Date.now(),
-        text: inputText,
-        completed: false,
+        texto,
+        concluida: false,
       };
-      setTasks([...tasks, newTask]);
-      setInputText("");
+      setTarefas([...tarefas, novaTarefa]);
     }
   };
 
-  const handleToggleTask = (taskId) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task, completed: !task.completed } : task
+  const alternarStatusTarefa = (idTarefa) => {
+    const tarefasAtualizadas = tarefas.map((tarefa) =>
+      tarefa.id === idTarefa ? { ...tarefa, concluida: !tarefa.concluida } : tarefa
     );
-    setTasks(updatedTasks);
+    setTarefas(tarefasAtualizadas);
   };
 
-  const handleRemoveTask = (taskId) => {
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(updatedTasks);
+  const removerTarefa = (idTarefa) => {
+    const tarefasAtualizadas = tarefas.filter((tarefa) => tarefa.id !== idTarefa);
+    setTarefas(tarefasAtualizadas);
   };
 
   return (
     <div className="App">
-      <h1>Todo List</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Insira uma tarefa"
-          value={inputText}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleAddTask}>Adicionar</button>
-      </div>
-      <ul className="task-list">
-        {tasks.map((task) => (
-          <li
-            key={task.id}
-            className={`task-item ${task.completed ? "completed" : ""}`}
-          >
-            <label>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => handleToggleTask(task.id)}
-              />
-              {task.text}
-            </label>
-            <button onClick={() => handleRemoveTask(task.id)}>Remover</button>
-          </li>
-        ))}
-      </ul>
+      <h1>Lista de Tarefas</h1>
+      <FormularioAdicionarTarefa onAdicionarTarefa={adicionarTarefa} />
+      <ListaDeTarefas
+        tarefas={tarefas}
+        onAlternarStatus={alternarStatusTarefa}
+        onRemoverTarefa={removerTarefa}
+      />
     </div>
   );
 }
